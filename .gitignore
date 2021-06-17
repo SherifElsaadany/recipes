@@ -1,0 +1,11 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+xcuserdata/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+.build/
+Dependencies/
+.accio/
