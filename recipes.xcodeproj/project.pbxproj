@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		5BB37261267BB0D900B3B953 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB37260267BB0D900B3B953 /* AppDelegate.swift */; };
 		5BB37263267BB0D900B3B953 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB37262267BB0D900B3B953 /* SceneDelegate.swift */; };
-		5BB37265267BB0D900B3B953 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB37264267BB0D900B3B953 /* ViewController.swift */; };
-		5BB37268267BB0D900B3B953 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB37266267BB0D900B3B953 /* Main.storyboard */; };
 		5BB3726A267BB0DA00B3B953 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB37269267BB0DA00B3B953 /* Assets.xcassets */; };
 		5BB3726D267BB0DA00B3B953 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB3726B267BB0DA00B3B953 /* LaunchScreen.storyboard */; };
 		5BB37278267BB0DA00B3B953 /* recipesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB37277267BB0DA00B3B953 /* recipesTests.swift */; };
@@ -38,8 +36,6 @@
 		5BB3725D267BB0D900B3B953 /* recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB37260267BB0D900B3B953 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BB37262267BB0D900B3B953 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5BB37264267BB0D900B3B953 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5BB37267267BB0D900B3B953 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BB37269267BB0DA00B3B953 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BB3726C267BB0DA00B3B953 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BB3726E267BB0DA00B3B953 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,13 +95,9 @@
 		5BB3725F267BB0D900B3B953 /* recipes */ = {
 			isa = PBXGroup;
 			children = (
-				5BB37260267BB0D900B3B953 /* AppDelegate.swift */,
-				5BB37262267BB0D900B3B953 /* SceneDelegate.swift */,
-				5BB37264267BB0D900B3B953 /* ViewController.swift */,
-				5BB37266267BB0D900B3B953 /* Main.storyboard */,
-				5BB37269267BB0DA00B3B953 /* Assets.xcassets */,
-				5BB3726B267BB0DA00B3B953 /* LaunchScreen.storyboard */,
-				5BB3726E267BB0DA00B3B953 /* Info.plist */,
+				5BB37293267BB1DC00B3B953 /* App */,
+				5BB3729A267BB1EB00B3B953 /* Resources */,
+				5BB3729B267BB1F600B3B953 /* Supporting Files */,
 			);
 			path = recipes;
 			sourceTree = "<group>";
@@ -126,6 +118,32 @@
 				5BB37284267BB0DA00B3B953 /* Info.plist */,
 			);
 			path = recipesUITests;
+			sourceTree = "<group>";
+		};
+		5BB37293267BB1DC00B3B953 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5BB37260267BB0D900B3B953 /* AppDelegate.swift */,
+				5BB37262267BB0D900B3B953 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5BB3729A267BB1EB00B3B953 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5BB37269267BB0DA00B3B953 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5BB3729B267BB1F600B3B953 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5BB3726B267BB0DA00B3B953 /* LaunchScreen.storyboard */,
+				5BB3726E267BB0DA00B3B953 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +251,6 @@
 			files = (
 				5BB3726D267BB0DA00B3B953 /* LaunchScreen.storyboard in Resources */,
 				5BB3726A267BB0DA00B3B953 /* Assets.xcassets in Resources */,
-				5BB37268267BB0D900B3B953 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +275,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BB37265267BB0D900B3B953 /* ViewController.swift in Sources */,
 				5BB37261267BB0D900B3B953 /* AppDelegate.swift in Sources */,
 				5BB37263267BB0D900B3B953 /* SceneDelegate.swift in Sources */,
 			);
@@ -296,14 +312,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5BB37266267BB0D900B3B953 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BB37267267BB0D900B3B953 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5BB3726B267BB0DA00B3B953 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -438,7 +446,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N3H6G9NC2G;
-				INFOPLIST_FILE = recipes/Info.plist;
+				INFOPLIST_FILE = "recipes/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,7 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.elsaadany.recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -457,7 +466,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N3H6G9NC2G;
-				INFOPLIST_FILE = recipes/Info.plist;
+				INFOPLIST_FILE = "recipes/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,7 +475,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.elsaadany.recipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
