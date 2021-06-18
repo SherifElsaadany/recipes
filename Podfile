@@ -6,6 +6,7 @@ target 'recipes' do
   use_frameworks!
 
   # Pods for recipes
+  pod 'Alamofire'
 
   target 'recipesTests' do
     inherit! :search_paths

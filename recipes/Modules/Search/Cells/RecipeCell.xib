@@ -13,15 +13,12 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="149" id="KGk-i7-Jjw" customClass="RecipeCell" customModule="recipes" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="342" height="149"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="342" height="149"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gWa-MD-7v4">
-                        <rect key="frame" x="20" y="26" width="85.5" height="85.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="gWa-MD-7v4" secondAttribute="height" id="jpS-g4-qjB"/>
-                        </constraints>
+                        <rect key="frame" x="20" y="26" width="85.5" height="97"/>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zfq-4c-Brn">
                         <rect key="frame" x="120.5" y="26" width="206.5" height="71.5"/>
