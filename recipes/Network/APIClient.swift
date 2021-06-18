@@ -20,4 +20,8 @@ struct APIClient {
             completion(response.result)
         }
     }
+    
+//    func stopAll() {
+//        AF.session.invalidateAndCancel()
+//    }
 }

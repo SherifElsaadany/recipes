@@ -8,9 +8,9 @@
 import Foundation
 import Alamofire
 
-struct WebServices {
+struct WebServices: WebServiceProtocol {
     
-    let networkProvider = APIClient()
+    private let networkProvider = APIClient()
     
     func searchRecipes(of query: String, completion: @escaping (Result<Recipes, AFError>) -> Void) {
         networkProvider.performRequest(.search(query: query)) { (result: Result<Recipes, AFError>) in
@@ -26,6 +26,12 @@ struct WebServices {
     
     func getNextPage(of url: String, completion: @escaping (Result<Recipes, AFError>) -> Void) {
         networkProvider.performRequest(.nextPage(url)) { (result: Result<Recipes, AFError>) in
+            completion(result)
+        }
+    }
+    
+    func downloadImage(from url: String, completion: @escaping (Result<Data, AFError>) -> Void) {
+        networkProvider.downloadImage(from: url) { (result) in
             completion(result)
         }
     }

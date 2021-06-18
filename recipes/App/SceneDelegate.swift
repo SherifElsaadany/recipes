@@ -18,7 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-        self.window?.rootViewController = SearchVC()
+        let router = SearchRouter.start()
+        let rootVC = router.entry
+        
+        self.window?.rootViewController = rootVC
         self.window?.makeKeyAndVisible()
         
     }

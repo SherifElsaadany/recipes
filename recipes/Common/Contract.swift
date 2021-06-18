@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol ReusableView: class {}
 
@@ -13,4 +14,15 @@ extension ReusableView {
     static var reuseIdentifier: String {
         return String(describing: self)
     }
+}
+
+protocol WebServiceProtocol {
+    
+    func searchRecipes(of query: String, completion: @escaping (Result<Recipes, AFError>) -> Void)
+    
+    func searchFilteredRecipes(of query: String, and filter: String, completion: @escaping (Result<Recipes, AFError>) -> Void)
+    
+    func getNextPage(of url: String, completion: @escaping (Result<Recipes, AFError>) -> Void)
+    
+    func downloadImage(from url: String, completion: @escaping (Result<Data, AFError>) -> Void)
 }
