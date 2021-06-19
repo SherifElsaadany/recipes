@@ -7,7 +7,8 @@ target 'recipes' do
 
   # Pods for recipes
   pod 'Alamofire'
-
+  pod 'Kingfisher'
+  
   target 'recipesTests' do
     inherit! :search_paths
     # Pods for testing

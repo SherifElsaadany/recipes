@@ -14,10 +14,13 @@ protocol PresenterToViewSearchProtocol: class {
     
     func updateResultsView()
     func showAlertMessage(error: String)
-    func updateImage(at index: Int)
+    func hideTableView()
     
     func showHUD()
     func hideHUD()
+    
+    func showFooterIndicator()
+    func hideFooterIndicator()
 }
 
 
@@ -34,6 +37,8 @@ protocol ViewToPresenterSearchProtocol: class {
         
     func resultCell(at index: Int) -> RecipeResult?
     
+    func didDisplayLastRow()
+    
     func didSelectRowAt(index: Int)
 
 }
@@ -44,20 +49,20 @@ protocol PresenterToInteractorSearchProtocol: class {
     
     var presenter: InteractorToPresenterSearchProtocol? { get set }
     var webService: WebServiceProtocol? { get set }
+    var isFetchingPage: Bool { get set }
     
     func loadSearchResults(for query: String)
-    func getSearchResult(at index: Int) -> RecipeResult?
+    func loadNextPage()
+    func getSearchResult(at index: Int) -> Recipe?
 }
 
 
 // MARK: Interactor Output (Interactor -> Presenter)
 protocol InteractorToPresenterSearchProtocol: class {
     
-    func searchDidSuccess(result: [RecipeResult]?)
-    func searchDidFail(error: String)
-    
-    func downloadImageDidSuccess(at index: Int)
-    
+    func fetchDidRetrieve(count: Int?)
+    func fetchDidFail(error: String)
+    func noMorePages()
 }
 
 
@@ -68,5 +73,5 @@ protocol RouterSearchProtocol: class {
     
     static func start() -> RouterSearchProtocol
     
-    func pushToRecipeDetails(on view: PresenterToViewSearchProtocol, with quote: Recipe)
+    func pushToRecipeDetails(on view: PresenterToViewSearchProtocol, with quote: Int)
 }

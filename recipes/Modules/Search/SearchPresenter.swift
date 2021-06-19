@@ -25,7 +25,15 @@ extension SearchPresenter: ViewToPresenterSearchProtocol {
     }
     
     func resultCell(at index: Int) -> RecipeResult? {
-        return interactor?.getSearchResult(at: index)
+        let result = interactor?.getSearchResult(at: index)
+        let cellData = result.map { RecipeResult(recipe: $0)}
+        return cellData
+    }
+    
+    func didDisplayLastRow() {
+        view?.showFooterIndicator()
+        guard !(interactor!.isFetchingPage) else {return}
+        self.interactor?.loadNextPage()
     }
     
     func didSelectRowAt(index: Int) {
@@ -36,21 +44,25 @@ extension SearchPresenter: ViewToPresenterSearchProtocol {
 
 //MARK:- InteractorToPresenterSearchProtocol
 extension SearchPresenter: InteractorToPresenterSearchProtocol {
-
-    func searchDidSuccess(result: [RecipeResult]?) {
+    
+    func fetchDidRetrieve(count: Int?) {
         
-        guard result?.count ?? 0 > 0 else {return}
-        self.numberOfRows = result?.count
+        guard count ?? 0 > 0 else {
+            view?.hideTableView()
+            return
+        }
         
+        self.numberOfRows = count
         view?.updateResultsView()
+        view?.hideFooterIndicator()
     }
     
-    func searchDidFail(error: String) {
+    func fetchDidFail(error: String) {
         view?.showAlertMessage(error: error)
+        view?.hideFooterIndicator()
     }
     
-    func downloadImageDidSuccess(at index: Int) {
-        view?.updateImage(at: index)
+    func noMorePages() {
+        view?.hideFooterIndicator()
     }
- 
 }

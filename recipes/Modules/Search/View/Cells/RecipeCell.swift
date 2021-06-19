@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RecipeCell: UITableViewCell, ReusableView {
     
@@ -35,8 +36,10 @@ class RecipeCell: UITableViewCell, ReusableView {
         self.titleLabel.text = result?.title  ?? ""
         self.sourceLabel.text = "From \(result?.source  ?? "")"
         self.healthLabels.text = result?.healthLabels?.joined(separator: ", ")  ?? ""
-        self.recipeImageView.image = UIImage(data: result?.image ?? Data())
-        
+        if let url = URL(string: result?.image ?? "")  {
+            recipeImageView.kf.indicatorType = .activity
+            recipeImageView.kf.setImage(with: url)
+        }
     }
     
 }

@@ -30,6 +30,15 @@ extension SearchVC {
         self.recipesTableView.delegate = self
         self.recipesTableView.dataSource = self
         registerTableViewCells()
+        addFooterIndicator()
+    }
+    
+    func addFooterIndicator() {
+        let footerLabel = UILabel()
+        footerLabel.text = "Loading..."
+        footerLabel.textAlignment = .center
+        footerLabel.backgroundColor = .green
+        recipesTableView.tableFooterView = footerLabel
     }
     
     func configureCollectionview() {
@@ -94,6 +103,12 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if recipesTableView.contentOffset.y >= (recipesTableView.contentSize.height - recipesTableView.frame.size.height) {
+            
+            self.presenter?.didDisplayLastRow()
+        }
+    }
     
 }
 
@@ -101,11 +116,13 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
 extension SearchVC: PresenterToViewSearchProtocol {
     
     func updateResultsView() {
+        recipesTableView.isHidden = false
         self.recipesTableView.reloadData()
     }
     
-    func updateImage(at index: Int) {
-        recipesTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+    
+    func hideTableView() {
+        recipesTableView.isHidden = true
     }
     
     func showAlertMessage(error: String) {
@@ -120,5 +137,12 @@ extension SearchVC: PresenterToViewSearchProtocol {
         
     }
     
+    func showFooterIndicator() {
+        recipesTableView.tableFooterView?.bounds.size.height = 50
+    }
     
+    func hideFooterIndicator() {
+        recipesTableView.tableFooterView?.bounds.size.height = 0
+    }
+
 }

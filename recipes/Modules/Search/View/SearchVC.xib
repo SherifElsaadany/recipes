@@ -22,7 +22,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="6VT-uQ-Hgp">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No search results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e5k-CN-Flp">
+                    <rect key="frame" x="10" y="435" width="394" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" systemColor="systemGray3Color"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for recipes or ingredients" translatesAutoresizingMaskIntoConstraints="NO" id="6VT-uQ-Hgp">
                     <rect key="frame" x="20" y="44" width="374" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
@@ -36,7 +42,7 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FOk-TF-u2g">
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FOk-TF-u2g">
                     <rect key="frame" x="20" y="196.5" width="374" height="665.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
@@ -46,14 +52,17 @@
             <constraints>
                 <constraint firstItem="ZhF-hl-af1" firstAttribute="top" secondItem="6VT-uQ-Hgp" secondAttribute="bottom" constant="14" id="1Ns-Ih-MiE"/>
                 <constraint firstItem="ZhF-hl-af1" firstAttribute="centerX" secondItem="6VT-uQ-Hgp" secondAttribute="centerX" id="6gG-Zz-RLp"/>
+                <constraint firstItem="e5k-CN-Flp" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="GIO-ok-7aZ"/>
                 <constraint firstItem="6VT-uQ-Hgp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RJg-Dc-Ppy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FOk-TF-u2g" secondAttribute="bottom" id="SlX-z4-RaF"/>
                 <constraint firstItem="FOk-TF-u2g" firstAttribute="leading" secondItem="ZhF-hl-af1" secondAttribute="leading" id="ajd-qf-6nX"/>
+                <constraint firstItem="e5k-CN-Flp" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="gHK-EI-mvg"/>
                 <constraint firstItem="FOk-TF-u2g" firstAttribute="top" secondItem="ZhF-hl-af1" secondAttribute="bottom" constant="20" id="htK-vN-2Wo"/>
                 <constraint firstItem="FOk-TF-u2g" firstAttribute="centerX" secondItem="ZhF-hl-af1" secondAttribute="centerX" id="iE4-hy-vsb"/>
                 <constraint firstItem="ZhF-hl-af1" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07" id="iRZ-fp-0m2"/>
                 <constraint firstItem="ZhF-hl-af1" firstAttribute="leading" secondItem="6VT-uQ-Hgp" secondAttribute="leading" id="pPT-jw-mPd"/>
                 <constraint firstItem="6VT-uQ-Hgp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="per-pM-Q6u"/>
+                <constraint firstItem="e5k-CN-Flp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="qoO-G2-3d4"/>
                 <constraint firstItem="6VT-uQ-Hgp" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sye-Xf-LtA"/>
             </constraints>
             <point key="canvasLocation" x="-7" y="86"/>
@@ -62,6 +71,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

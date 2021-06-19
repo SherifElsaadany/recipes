@@ -38,7 +38,7 @@ class SearchRouter: RouterSearchProtocol {
         return router
     }
     
-    func pushToRecipeDetails(on view: PresenterToViewSearchProtocol, with quote: Recipe) {
+    func pushToRecipeDetails(on view: PresenterToViewSearchProtocol, with quote: Int) {
         
     }
 

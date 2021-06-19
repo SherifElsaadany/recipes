@@ -17,21 +17,20 @@ class SearchInteractor {
     
     var recipeResults: [RecipeResult]?
     
+    var isFetchingPage: Bool = false
+    
     init(webService: WebServiceProtocol) {
         self.webService = webService
     }
     
-    func downloadImage(from url: String?, at index: Int) {
-        guard let imageUrl = url else {return}
-        webService?.downloadImage(from: imageUrl, completion: { [weak self] (result) in
-            switch result {
-            case .success(let data):
-                self?.recipeResults?[index].image = data
-                self?.presenter?.downloadImageDidSuccess(at: index)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        })
+    func mergeOldResults(with newResult: Recipes) {
+        var hits = self.recipes?.hits
+        if let newHits = newResult.hits {
+            hits?.append(contentsOf: newHits)
+        }
+        
+        self.recipes = newResult
+        self.recipes?.hits = hits
     }
 }
 
@@ -44,23 +43,34 @@ extension SearchInteractor: PresenterToInteractorSearchProtocol {
             case .success(let recipes):
                 
                 self?.recipes = recipes
-                self?.recipeResults = recipes.hits?.map {RecipeResult(recipe: $0.recipe) }
-                self?.presenter?.searchDidSuccess(result: self?.recipeResults)
+                self?.presenter?.fetchDidRetrieve(count: recipes.hits?.count)
             case .failure(let error):
-                self?.presenter?.searchDidFail(error: error.localizedDescription)
+                self?.presenter?.fetchDidFail(error: error.localizedDescription)
             }
         })
     }
     
-    func getSearchResult(at index: Int) -> RecipeResult? {
-        let result = recipeResults?[index]
-        
-        if result?.image == nil {
-            let imageUrl = recipes?.hits?[index].recipe?.image
-            self.downloadImage(from: imageUrl, at: index)            
-        }
-        
+    func getSearchResult(at index: Int) -> Recipe? {
+        let result = recipes?.hits?[index].recipe
         return result
     }
     
+    func loadNextPage() {
+        guard let nextPageUrl = recipes?.links?.next?.href else {
+            presenter?.noMorePages()
+            return
+        }
+        
+        isFetchingPage = true
+        webService?.getNextPage(of: nextPageUrl, completion: { [weak self] (result) in
+            self?.isFetchingPage = false
+            switch result {
+            case .success(let recipes):
+                self?.mergeOldResults(with: recipes)
+                self?.presenter?.fetchDidRetrieve(count: self?.recipes?.hits?.count)
+            case .failure(let error):
+                self?.presenter?.fetchDidFail(error: error.localizedDescription)
+            }
+        })
+    }
 }
