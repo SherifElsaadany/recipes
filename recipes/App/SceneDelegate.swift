@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let router = SearchRouter.start()
         let rootVC = router.entry
         
-        self.window?.rootViewController = rootVC
+        self.window?.rootViewController = UINavigationController(rootViewController: rootVC!)
         self.window?.makeKeyAndVisible()
         
     }

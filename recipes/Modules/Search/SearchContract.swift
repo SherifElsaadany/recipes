@@ -78,5 +78,5 @@ protocol RouterSearchProtocol: class {
     
     static func start() -> RouterSearchProtocol
     
-    func pushToRecipeDetails(on view: PresenterToViewSearchProtocol, with quote: Int)
+    func pushToRecipeDetails(with recipe: Recipe)
 }

@@ -137,6 +137,10 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presenter?.didSelectRowAt(index: indexPath.row)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (recipesTableView.contentOffset.y + 1) >= (recipesTableView.contentSize.height - recipesTableView.frame.size.height) {
             

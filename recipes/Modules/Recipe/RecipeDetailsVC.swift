@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
+import SafariServices
 
-class RecipeDetailsVC: UIViewController {
+class RecipeDetailsVC: UIViewController, SFSafariViewControllerDelegate {
+    
+    var presenter: ViewToPresenterDetailsProtocol?
     
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var ingredientsTextView: UITextView!
@@ -15,10 +19,23 @@ class RecipeDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ingredientsTextView.isEditable = false
+        self.presenter?.viewDidLoad()
     }
     
     @IBAction func recipeWebsiteTapped(_ sender: Any) {
-        
+        presenter?.didTapWebite()
     }
+}
+
+//MARK:- PresenterToViewDetailsProtocol
+extension RecipeDetailsVC: PresenterToViewDetailsProtocol {
     
+    func updateDetailsView(title: String, imageUrl: String, ingredients: String) {
+        self.title = title
+        self.ingredientsTextView.text = ingredients
+        if let url = URL(string: imageUrl)  {
+            recipeImageView.kf.indicatorType = .activity
+            recipeImageView.kf.setImage(with: url)
+        }
+    }
 }

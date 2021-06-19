@@ -59,7 +59,8 @@ extension SearchPresenter: ViewToPresenterSearchProtocol {
     }
     
     func didSelectRowAt(index: Int) {
-        
+        guard let recipe = interactor?.getSearchResult(at: index) else {return}
+        router?.pushToRecipeDetails(with: recipe)
     }
     
     func didSelectFilterItemAt(index: Int) {
