@@ -20,10 +20,27 @@ class RecipeDetailsVC: UIViewController, SFSafariViewControllerDelegate {
         super.viewDidLoad()
         ingredientsTextView.isEditable = false
         self.presenter?.viewDidLoad()
+        addShareBtn()
     }
     
     @IBAction func recipeWebsiteTapped(_ sender: Any) {
         presenter?.didTapWebite()
+    }
+}
+
+//MARK:- Methods
+extension RecipeDetailsVC {
+    func addShareBtn() {
+        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(#imageLiteral(resourceName: "share"), for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(shareTapped), for: UIControl.Event.touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 50, height: 30)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc func shareTapped() {
+        presenter?.didTapShare()
     }
 }
 
