@@ -14,14 +14,36 @@ class SearchPresenter {
     var router: RouterSearchProtocol?
     
     var numberOfRows: Int?
+    var numberOfCollectionViewItems: Int?
+    
+    var query: String?
+    
+    func handleSearchOptions(for query: String, and filterIndex: Int) {
+        if filterIndex == 0 {
+            interactor?.loadSearchResults(for: query)
+        } else {
+            interactor?.filterResults(of: query, filterIndex: filterIndex)
+        }
+    }
     
 }
 
 //MARK:- PresenterToViewSearchProtocol
 extension SearchPresenter: ViewToPresenterSearchProtocol {
     
-    func search(for query: String) {
-        interactor?.loadSearchResults(for: query)
+    func viewDidLoad() {
+        interactor?.loadFilterItems()
+    }
+    
+    func filterItem(at index: Int) -> String? {
+        let title = interactor?.getFilterItem(at: index).rawValue.capitalized.replacingOccurrences(of: "-", with: " ")
+        return title
+    }
+
+    func search(for query: String, at filterIndex: Int) {
+        self.query = query
+        
+        handleSearchOptions(for: query, and: filterIndex)
     }
     
     func resultCell(at index: Int) -> RecipeResult? {
@@ -39,14 +61,24 @@ extension SearchPresenter: ViewToPresenterSearchProtocol {
     func didSelectRowAt(index: Int) {
         
     }
+    
+    func didSelectFilterItemAt(index: Int) {
+        
+        guard let query = self.query else {return}
+        
+        handleSearchOptions(for: query, and: index)
+    }
 
 }
 
 //MARK:- InteractorToPresenterSearchProtocol
 extension SearchPresenter: InteractorToPresenterSearchProtocol {
+    func didLoadFilterItems(count: Int) {
+        self.numberOfCollectionViewItems = count
+        view?.loadCollectionView()
+    }
     
     func fetchDidRetrieve(count: Int?) {
-        
         guard count ?? 0 > 0 else {
             view?.hideTableView()
             return

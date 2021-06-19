@@ -7,14 +7,12 @@
 
 import Foundation
 
-struct HealthFilter {
+enum HealthFilter: String {
+    static let items: [HealthFilter] = [.all, .lowSugar, .keto, .vegan]
     
-    enum Filter: String {
-        case all = "All"
-        case lowSugar = "Low Sugar"
-        case keto = "Keto"
-        case vegan = "Vegan"
-    }
+    case all = "All"
+    case lowSugar = "low-sugar"
+    case keto = "keto-friendly"
+    case vegan = "vegan"
     
-    let items: [Filter] = [.all, .lowSugar, .keto, .vegan]
 }

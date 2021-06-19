@@ -9,7 +9,14 @@ import UIKit
 
 class FilterCell: UICollectionViewCell, ReusableView {
     
-    let title = UILabel()
+    let titleLabel = UILabel()
+    
+    override var isSelected: Bool {
+        didSet {
+            self.titleLabel.textColor = isSelected ? .white : #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+            self.backgroundColor = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,17 +28,21 @@ class FilterCell: UICollectionViewCell, ReusableView {
     }
     
     private func addTitleLabel() {
-        self.addSubview(title)
+        titleLabel.textAlignment = .center
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.5
+        titleLabel.numberOfLines = 2
+        self.addSubview(titleLabel)
         setLabelConstraints()
     }
     
     private func setLabelConstraints() {
-        title.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            title.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            title.topAnchor.constraint(equalTo: self.topAnchor),
-            title.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
 }

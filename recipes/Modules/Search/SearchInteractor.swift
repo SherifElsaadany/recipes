@@ -36,12 +36,18 @@ class SearchInteractor {
 
 //MARK:- InteractorToPresenterSearchProtocol
 extension SearchInteractor: PresenterToInteractorSearchProtocol {
+    func loadFilterItems() {
+        presenter?.didLoadFilterItems(count: HealthFilter.items.count)
+    }
+    
+    func getFilterItem(at index: Int) -> HealthFilter {
+        return HealthFilter.items[index]
+    }
     
     func loadSearchResults(for query: String) {
         webService?.searchRecipes(of: query, completion: { [weak self] (result) in
             switch result {
             case .success(let recipes):
-                
                 self?.recipes = recipes
                 self?.presenter?.fetchDidRetrieve(count: recipes.hits?.count)
             case .failure(let error):
@@ -68,6 +74,20 @@ extension SearchInteractor: PresenterToInteractorSearchProtocol {
             case .success(let recipes):
                 self?.mergeOldResults(with: recipes)
                 self?.presenter?.fetchDidRetrieve(count: self?.recipes?.hits?.count)
+            case .failure(let error):
+                self?.presenter?.fetchDidFail(error: error.localizedDescription)
+            }
+        })
+    }
+    
+    func filterResults(of query: String, filterIndex: Int) {
+        let health = HealthFilter.items[filterIndex].rawValue
+        
+        webService?.filterRecipeResults(of: query, and: health, completion: { [weak self] (result) in
+            switch result {
+            case .success(let recipes):
+                self?.recipes = recipes
+                self?.presenter?.fetchDidRetrieve(count: recipes.hits?.count)
             case .failure(let error):
                 self?.presenter?.fetchDidFail(error: error.localizedDescription)
             }

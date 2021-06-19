@@ -20,9 +20,7 @@ protocol WebServiceProtocol {
     
     func searchRecipes(of query: String, completion: @escaping (Result<Recipes, AFError>) -> Void)
     
-    func searchFilteredRecipes(of query: String, and filter: String, completion: @escaping (Result<Recipes, AFError>) -> Void)
+    func filterRecipeResults(of query: String, and filter: String, completion: @escaping (Result<Recipes, AFError>) -> Void)
     
     func getNextPage(of url: String, completion: @escaping (Result<Recipes, AFError>) -> Void)
-    
-    func downloadImage(from url: String, completion: @escaping (Result<Data, AFError>) -> Void)
 }

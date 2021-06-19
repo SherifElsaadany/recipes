@@ -14,14 +14,4 @@ struct APIClient {
             completion(response.result)
         }
     }
-    
-    func downloadImage(from url: String, completion: @escaping (Result<Data, AFError>) -> Void) {
-        AF.request(url).responseData { (response) in
-            completion(response.result)
-        }
-    }
-    
-//    func stopAll() {
-//        AF.session.invalidateAndCancel()
-//    }
 }

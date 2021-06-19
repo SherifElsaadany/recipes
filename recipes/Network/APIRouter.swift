@@ -36,7 +36,7 @@ extension APIRouter {
     
     private var path: String? {
         switch self {
-        case .search:
+        case .search, .filteredSearch:
             return "/api/recipes/v2"
         default:
             return nil
@@ -92,7 +92,6 @@ extension APIRouter {
                 
             }
         }
-        
         return urlRequest
     }
 }

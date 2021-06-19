@@ -29,11 +29,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for recipes or ingredients" translatesAutoresizingMaskIntoConstraints="NO" id="6VT-uQ-Hgp">
-                    <rect key="frame" x="20" y="44" width="374" height="56"/>
+                    <rect key="frame" x="5" y="44" width="404" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZhF-hl-af1">
-                    <rect key="frame" x="20" y="114" width="374" height="62.5"/>
+                    <rect key="frame" x="5" y="114" width="404" height="62.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kgo-GA-U7T">
                         <size key="itemSize" width="128" height="128"/>
@@ -43,7 +43,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FOk-TF-u2g">
-                    <rect key="frame" x="20" y="196.5" width="374" height="665.5"/>
+                    <rect key="frame" x="5" y="196.5" width="404" height="665.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
@@ -61,7 +61,7 @@
                 <constraint firstItem="FOk-TF-u2g" firstAttribute="centerX" secondItem="ZhF-hl-af1" secondAttribute="centerX" id="iE4-hy-vsb"/>
                 <constraint firstItem="ZhF-hl-af1" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07" id="iRZ-fp-0m2"/>
                 <constraint firstItem="ZhF-hl-af1" firstAttribute="leading" secondItem="6VT-uQ-Hgp" secondAttribute="leading" id="pPT-jw-mPd"/>
-                <constraint firstItem="6VT-uQ-Hgp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="per-pM-Q6u"/>
+                <constraint firstItem="6VT-uQ-Hgp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="per-pM-Q6u"/>
                 <constraint firstItem="e5k-CN-Flp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="qoO-G2-3d4"/>
                 <constraint firstItem="6VT-uQ-Hgp" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sye-Xf-LtA"/>
             </constraints>

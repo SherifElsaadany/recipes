@@ -10,6 +10,8 @@ import UIKit
 class SearchVC: UIViewController {
     
     var presenter: ViewToPresenterSearchProtocol?
+    
+    var selectedCellIndexpth = IndexPath(item: 0, section: 0)
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterCollectionView: UICollectionView!
@@ -20,6 +22,7 @@ class SearchVC: UIViewController {
         configureCollectionview()
         configureTableView()
         configureSearchBar()
+        self.presenter?.viewDidLoad()
     }
     
 }
@@ -45,6 +48,7 @@ extension SearchVC {
         self.filterCollectionView.delegate = self
         self.filterCollectionView.dataSource = self
         self.registerCollectionViewCells()
+        self.setCollectionViewInsets()
     }
     
     func registerTableViewCells() {
@@ -53,6 +57,10 @@ extension SearchVC {
     
     func registerCollectionViewCells() {
         filterCollectionView.register(FilterCell.self, forCellWithReuseIdentifier: FilterCell.reuseIdentifier)
+    }
+    
+    func setCollectionViewInsets() {
+        self.filterCollectionView.contentInset = UIEdgeInsets.zero
     }
     
     func configureSearchBar() {
@@ -68,7 +76,7 @@ extension SearchVC: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let query = searchBar.text ?? ""
-        presenter?.search(for: query)
+        presenter?.search(for: query, at: selectedCellIndexpth.row)
         searchBar.resignFirstResponder()
     }
     
@@ -76,18 +84,44 @@ extension SearchVC: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchBar.showsCancelButton = false
     }
+    
+    func setCellSelection(status: Bool, at indexPath: IndexPath) {
+        if let cell = filterCollectionView.cellForItem(at: indexPath) as? FilterCell {
+            cell.isSelected = status
+        }
+    }
 }
 
 //MARK:- CollectionView
 extension SearchVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        return presenter?.numberOfCollectionViewItems ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCell.reuseIdentifier, for: indexPath) as! FilterCell
-        cell.title.text = "\(indexPath.row)"
+        cell.titleLabel.text = self.presenter?.filterItem(at: indexPath.row)
+        cell.isSelected = indexPath.row == 0 ? true : false
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width / 4
+        let height = collectionView.bounds.height
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath != selectedCellIndexpth else {return}
+        
+        setCellSelection(status: false, at: selectedCellIndexpth)
+        selectedCellIndexpth = indexPath
+        
+        self.presenter?.didSelectFilterItemAt(index: indexPath.row)
     }
 }
 
@@ -104,16 +138,19 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if recipesTableView.contentOffset.y >= (recipesTableView.contentSize.height - recipesTableView.frame.size.height) {
+        if (recipesTableView.contentOffset.y + 1) >= (recipesTableView.contentSize.height - recipesTableView.frame.size.height) {
             
             self.presenter?.didDisplayLastRow()
         }
     }
-    
 }
 
 //MARK:- PresenterToViewSearchProtocol
 extension SearchVC: PresenterToViewSearchProtocol {
+    
+    func loadCollectionView() {
+        self.filterCollectionView.reloadData()
+    }
     
     func updateResultsView() {
         recipesTableView.isHidden = false

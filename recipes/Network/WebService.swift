@@ -18,7 +18,7 @@ struct WebServices: WebServiceProtocol {
         }
     }
     
-    func searchFilteredRecipes(of query: String, and filter: String, completion: @escaping (Result<Recipes, AFError>) -> Void) {
+    func filterRecipeResults(of query: String, and filter: String, completion: @escaping (Result<Recipes, AFError>) -> Void) {
         networkProvider.performRequest(.filteredSearch(query, filter)) { (result: Result<Recipes, AFError>) in
             completion(result)
         }
@@ -26,12 +26,6 @@ struct WebServices: WebServiceProtocol {
     
     func getNextPage(of url: String, completion: @escaping (Result<Recipes, AFError>) -> Void) {
         networkProvider.performRequest(.nextPage(url)) { (result: Result<Recipes, AFError>) in
-            completion(result)
-        }
-    }
-    
-    func downloadImage(from url: String, completion: @escaping (Result<Data, AFError>) -> Void) {
-        networkProvider.downloadImage(from: url) { (result) in
             completion(result)
         }
     }

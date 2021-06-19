@@ -13,6 +13,7 @@ protocol PresenterToViewSearchProtocol: class {
     var presenter: ViewToPresenterSearchProtocol? { get set }
     
     func updateResultsView()
+    func loadCollectionView()
     func showAlertMessage(error: String)
     func hideTableView()
     
@@ -31,15 +32,15 @@ protocol ViewToPresenterSearchProtocol: class {
     var interactor: PresenterToInteractorSearchProtocol? { get set }
     var router: RouterSearchProtocol? { get set }
     var numberOfRows: Int? { get set }
+    var numberOfCollectionViewItems: Int? { get set }
     
-    
-    func search(for query: String)
-        
+    func viewDidLoad()
+    func filterItem(at index: Int) -> String?
+    func search(for query: String, at filterIndex: Int)
     func resultCell(at index: Int) -> RecipeResult?
-    
     func didDisplayLastRow()
-    
     func didSelectRowAt(index: Int)
+    func didSelectFilterItemAt(index: Int)
 
 }
 
@@ -51,15 +52,19 @@ protocol PresenterToInteractorSearchProtocol: class {
     var webService: WebServiceProtocol? { get set }
     var isFetchingPage: Bool { get set }
     
+    func loadFilterItems()
+    func getFilterItem(at index: Int) -> HealthFilter
     func loadSearchResults(for query: String)
     func loadNextPage()
     func getSearchResult(at index: Int) -> Recipe?
+    func filterResults(of query: String, filterIndex: Int)
 }
 
 
 // MARK: Interactor Output (Interactor -> Presenter)
 protocol InteractorToPresenterSearchProtocol: class {
     
+    func didLoadFilterItems(count: Int)
     func fetchDidRetrieve(count: Int?)
     func fetchDidFail(error: String)
     func noMorePages()
