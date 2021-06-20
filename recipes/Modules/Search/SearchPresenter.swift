@@ -26,6 +26,22 @@ class SearchPresenter {
         }
     }
     
+    func checkIfValid(query: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z ].*", options: [])
+            
+            if regex.firstMatch(in: query, options: [], range: NSMakeRange(0, query.count)) != nil {
+                return false
+                
+            } else {
+                return true
+            }
+        }
+        catch {
+            print(error)
+            return false
+        }
+    }
 }
 
 //MARK:- PresenterToViewSearchProtocol
@@ -43,7 +59,11 @@ extension SearchPresenter: ViewToPresenterSearchProtocol {
     func search(for query: String, at filterIndex: Int) {
         self.query = query
         
-        handleSearchOptions(for: query, and: filterIndex)
+        if checkIfValid(query: query) {
+            handleSearchOptions(for: query, and: filterIndex)
+        } else {
+            view?.showAlertMessage(error: "Search text must only contain alphabet and spaces")
+        }
     }
     
     func resultCell(at index: Int) -> RecipeResult? {
