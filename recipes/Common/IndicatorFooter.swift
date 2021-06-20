@@ -9,12 +9,12 @@ import UIKit
 
 class IndicatorFooter: UIView {
     
-    var spinner = UIActivityIndicatorView(style: .white)
+    let loadingLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(named: "navColor")
-        addSpinner()
+        addLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -25,21 +25,17 @@ class IndicatorFooter: UIView {
         super.layoutSubviews()
     }
     
-    private func addSpinner() {
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.startAnimating()
-        self.addSubview(spinner)
-        spinner.hidesWhenStopped = true
+    private func addLabel() {
+        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(loadingLabel)
+        loadingLabel.text = "......"
+        loadingLabel.textColor = .white
+        loadingLabel.font = loadingLabel.font.withSize(30)
         
-        spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-    }
-    
-    func startSpinner() {
-        spinner.startAnimating()
-    }
-    
-    func stopSpinner() {
-        spinner.stopAnimating()
+        NSLayoutConstraint.activate([
+            loadingLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            loadingLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            loadingLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
     }
 }

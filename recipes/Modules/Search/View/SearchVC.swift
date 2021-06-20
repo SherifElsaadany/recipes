@@ -240,12 +240,10 @@ extension SearchVC: PresenterToViewSearchProtocol {
     }
     
     func showFooterIndicator() {
-        footer.startSpinner()
         recipesTableView.tableFooterView?.bounds.size.height = 50
     }
     
     func hideFooterIndicator() {
-        footer.stopSpinner()
         recipesTableView.tableFooterView?.bounds.size.height = 0
     }
 }
