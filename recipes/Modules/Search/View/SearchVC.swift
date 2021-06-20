@@ -8,26 +8,35 @@
 import UIKit
 import DropDown
 
-class SearchVC: UIViewController {
+class SearchVC: BaseVC {
     
     var presenter: ViewToPresenterSearchProtocol?
     
     var selectedCellIndexpth = IndexPath(item: 0, section: 0)
     
     let dropDown = DropDown()
+    
+    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect.zero)
 
-    @IBOutlet weak var searchBar: UISearchBar!
+//    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterCollectionView: UICollectionView!
     @IBOutlet weak var recipesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(named: "navColor")
+        recipesTableView.backgroundColor = UIColor(named: "background")
         configureCollectionview()
         configureTableView()
-        configureSearchBar()
         addDropDown()
         addFooterIndicator()
         self.presenter?.viewDidLoad()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        configureSearchBar()
+        
     }
     
 }
@@ -61,6 +70,15 @@ extension SearchVC {
     
     func configureSearchBar() {
         searchBar.delegate = self
+        searchBar.placeholder = "Search"
+        searchBar.frame = self.view.bounds
+        let textfield = searchBar.value(forKey: "searchField") as? UITextField
+        textfield?.backgroundColor = UIColor(named: "backgroundColor")
+        textfield?.textColor = UIColor(named: "navColor")
+        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
+        self.navigationItem.leftBarButtonItem = leftNavBarButton
     }
     
     func setCellSelection(status: Bool, at indexPath: IndexPath) {
@@ -71,7 +89,7 @@ extension SearchVC {
     
     func addDropDown() {
         dropDown.anchorView = searchBar
-        dropDown.bottomOffset = CGPoint(x: 0, y: searchBar.frame.size.height)
+        dropDown.bottomOffset = CGPoint(x: 0, y: self.navigationController?.navigationBar.bounds.height ?? 0)
         dropDown.direction = .bottom
         dropDown.dismissMode = .automatic
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in

@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,26 +21,29 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YLw-lx-CXx">
-                    <rect key="frame" x="0.0" y="44" width="414" height="204.5"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMo-QI-7ng">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" name="backgroundColor"/>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YLw-lx-CXx">
+                    <rect key="frame" x="0.0" y="44" width="414" height="245.5"/>
+                    <color key="backgroundColor" name="navColor"/>
                 </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q6P-pC-UZ6">
-                    <rect key="frame" x="20" y="256" width="374" height="536"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <color key="textColor" systemColor="labelColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="q6P-pC-UZ6">
+                    <rect key="frame" x="20" y="297" width="374" height="485"/>
+                    <color key="textColor" name="navColor"/>
+                    <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8A-lq-QLc">
-                    <rect key="frame" x="20" y="812" width="374" height="50"/>
-                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    <rect key="frame" x="20" y="802" width="374" height="50"/>
+                    <color key="backgroundColor" name="navColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="gpb-jo-l0X"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Recipe's Website">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleColor" name="backgroundColor"/>
                     </state>
                     <connections>
                         <action selector="recipeWebsiteTapped:" destination="-1" eventType="touchUpInside" id="1uy-AY-9fI"/>
@@ -48,32 +51,33 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="navColor"/>
             <constraints>
                 <constraint firstItem="q6P-pC-UZ6" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="3tc-Od-w52"/>
                 <constraint firstItem="YLw-lx-CXx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Cfb-0i-Tf5"/>
                 <constraint firstItem="YLw-lx-CXx" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="HMA-qC-nmA"/>
                 <constraint firstItem="d8A-lq-QLc" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="MQw-2G-48Y"/>
+                <constraint firstItem="DMo-QI-7ng" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ot0-bg-gzS"/>
+                <constraint firstItem="DMo-QI-7ng" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="OtX-Ai-9gg"/>
                 <constraint firstItem="d8A-lq-QLc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="RCg-tp-1cw"/>
+                <constraint firstItem="DMo-QI-7ng" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Rle-HV-Qgz"/>
                 <constraint firstItem="YLw-lx-CXx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YDi-Qw-gp5"/>
                 <constraint firstItem="q6P-pC-UZ6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="dY0-g7-7qB"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="d8A-lq-QLc" secondAttribute="bottom" id="eBE-so-QMO"/>
-                <constraint firstItem="YLw-lx-CXx" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.25" id="f1Y-WB-C4K"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="d8A-lq-QLc" secondAttribute="bottom" constant="10" id="eBE-so-QMO"/>
+                <constraint firstItem="YLw-lx-CXx" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.3" id="f1Y-WB-C4K"/>
                 <constraint firstItem="d8A-lq-QLc" firstAttribute="top" secondItem="q6P-pC-UZ6" secondAttribute="bottom" constant="20" id="hgo-Py-NTk"/>
                 <constraint firstItem="q6P-pC-UZ6" firstAttribute="top" secondItem="YLw-lx-CXx" secondAttribute="bottom" constant="7.5" id="iTU-F6-Ydp"/>
+                <constraint firstItem="DMo-QI-7ng" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="uvc-8x-jE3"/>
             </constraints>
             <point key="canvasLocation" x="116" y="51"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="backgroundColor">
+            <color red="0.98039215686274506" green="0.93333333333333335" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="navColor">
+            <color red="0.63529411764705879" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

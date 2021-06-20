@@ -13,7 +13,7 @@ class IndicatorFooter: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .lightGray
+        self.backgroundColor = UIColor(named: "navColor")
         addSpinner()
     }
     
@@ -25,7 +25,7 @@ class IndicatorFooter: UIView {
         super.layoutSubviews()
     }
     
-    func addSpinner() {
+    private func addSpinner() {
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         self.addSubview(spinner)

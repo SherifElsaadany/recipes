@@ -39,7 +39,7 @@ extension DetailsPresenter: InteractorToPresenterDetailsProtocol {
     func fetchDidRetrieve(details: Recipe?) {
         let details = RecipeDetails(recipe: details)
         
-        let ingredients = details.ingredients?.joined(separator: "\n\n")
+        let ingredients = details.ingredients?.joined(separator: "\n")
         
         view?.updateDetailsView(title: details.title ?? "", imageUrl: details.image ?? "", ingredients: ingredients ?? "")
     }

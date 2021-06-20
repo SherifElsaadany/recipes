@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +14,6 @@
             <connections>
                 <outlet property="filterCollectionView" destination="ZhF-hl-af1" id="HIL-CV-S2M"/>
                 <outlet property="recipesTableView" destination="FOk-TF-u2g" id="aRx-81-qsk"/>
-                <outlet property="searchBar" destination="6VT-uQ-Hgp" id="jgU-ks-LUz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,19 +22,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5n-ZD-9Zj">
+                    <rect key="frame" x="0.0" y="106.5" width="414" height="755.5"/>
+                    <color key="backgroundColor" name="backgroundColor"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No search results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e5k-CN-Flp">
                     <rect key="frame" x="10" y="435" width="394" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <color key="textColor" systemColor="systemGray3Color"/>
+                    <color key="textColor" name="navColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for recipes or ingredients" translatesAutoresizingMaskIntoConstraints="NO" id="6VT-uQ-Hgp">
-                    <rect key="frame" x="5" y="44" width="404" height="56"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZhF-hl-af1">
-                    <rect key="frame" x="5" y="114" width="404" height="62.5"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                    <color key="backgroundColor" name="menuColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kgo-GA-U7T">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -43,36 +43,44 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FOk-TF-u2g">
-                    <rect key="frame" x="5" y="196.5" width="404" height="665.5"/>
+                    <rect key="frame" x="0.0" y="106.5" width="414" height="755.5"/>
+                    <color key="backgroundColor" name="backgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" systemColor="systemGray5Color"/>
             <constraints>
-                <constraint firstItem="ZhF-hl-af1" firstAttribute="top" secondItem="6VT-uQ-Hgp" secondAttribute="bottom" constant="14" id="1Ns-Ih-MiE"/>
-                <constraint firstItem="ZhF-hl-af1" firstAttribute="centerX" secondItem="6VT-uQ-Hgp" secondAttribute="centerX" id="6gG-Zz-RLp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="f5n-ZD-9Zj" secondAttribute="bottom" id="FmG-mZ-O2B"/>
                 <constraint firstItem="e5k-CN-Flp" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="GIO-ok-7aZ"/>
-                <constraint firstItem="6VT-uQ-Hgp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RJg-Dc-Ppy"/>
+                <constraint firstItem="ZhF-hl-af1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="HJJ-Gm-hzh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FOk-TF-u2g" secondAttribute="bottom" id="SlX-z4-RaF"/>
                 <constraint firstItem="FOk-TF-u2g" firstAttribute="leading" secondItem="ZhF-hl-af1" secondAttribute="leading" id="ajd-qf-6nX"/>
+                <constraint firstItem="f5n-ZD-9Zj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eDo-Qp-772"/>
                 <constraint firstItem="e5k-CN-Flp" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="gHK-EI-mvg"/>
-                <constraint firstItem="FOk-TF-u2g" firstAttribute="top" secondItem="ZhF-hl-af1" secondAttribute="bottom" constant="20" id="htK-vN-2Wo"/>
+                <constraint firstItem="FOk-TF-u2g" firstAttribute="top" secondItem="ZhF-hl-af1" secondAttribute="bottom" id="htK-vN-2Wo"/>
                 <constraint firstItem="FOk-TF-u2g" firstAttribute="centerX" secondItem="ZhF-hl-af1" secondAttribute="centerX" id="iE4-hy-vsb"/>
                 <constraint firstItem="ZhF-hl-af1" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07" id="iRZ-fp-0m2"/>
-                <constraint firstItem="ZhF-hl-af1" firstAttribute="leading" secondItem="6VT-uQ-Hgp" secondAttribute="leading" id="pPT-jw-mPd"/>
-                <constraint firstItem="6VT-uQ-Hgp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="per-pM-Q6u"/>
                 <constraint firstItem="e5k-CN-Flp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="qoO-G2-3d4"/>
-                <constraint firstItem="6VT-uQ-Hgp" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sye-Xf-LtA"/>
+                <constraint firstItem="f5n-ZD-9Zj" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="r4p-fd-cDi"/>
+                <constraint firstItem="f5n-ZD-9Zj" firstAttribute="top" secondItem="ZhF-hl-af1" secondAttribute="bottom" id="v53-nm-5RE"/>
+                <constraint firstItem="ZhF-hl-af1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wVL-bL-YQs"/>
+                <constraint firstItem="ZhF-hl-af1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="zh1-OW-M8d"/>
             </constraints>
             <point key="canvasLocation" x="-7" y="86"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="backgroundColor">
+            <color red="0.98039215686274506" green="0.93333333333333335" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="menuColor">
+            <color red="0.63529411764705879" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="navColor">
+            <color red="0.63529411764705879" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

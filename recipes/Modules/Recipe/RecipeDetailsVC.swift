@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 import SafariServices
 
-class RecipeDetailsVC: UIViewController, SFSafariViewControllerDelegate {
+class RecipeDetailsVC: BaseVC, SFSafariViewControllerDelegate {
     
     var presenter: ViewToPresenterDetailsProtocol?
     
@@ -21,6 +21,7 @@ class RecipeDetailsVC: UIViewController, SFSafariViewControllerDelegate {
         ingredientsTextView.isEditable = false
         self.presenter?.viewDidLoad()
         addShareBtn()
+//        recipeImageView.layer.cornerRadius = 10
     }
     
     @IBAction func recipeWebsiteTapped(_ sender: Any) {
