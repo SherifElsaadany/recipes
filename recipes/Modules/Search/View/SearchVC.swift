@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import DropDown
 
 class SearchVC: UIViewController {
     
     var presenter: ViewToPresenterSearchProtocol?
     
     var selectedCellIndexpth = IndexPath(item: 0, section: 0)
+    
+    let dropDown = DropDown()
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterCollectionView: UICollectionView!
@@ -22,6 +25,7 @@ class SearchVC: UIViewController {
         configureCollectionview()
         configureTableView()
         configureSearchBar()
+        addDropDown()
         self.presenter?.viewDidLoad()
     }
     
@@ -66,12 +70,33 @@ extension SearchVC {
     func configureSearchBar() {
         searchBar.delegate = self
     }
+    
+    func setCellSelection(status: Bool, at indexPath: IndexPath) {
+        if let cell = filterCollectionView.cellForItem(at: indexPath) as? FilterCell {
+            cell.isSelected = status
+        }
+    }
+    
+    func addDropDown() {
+        dropDown.anchorView = searchBar
+        dropDown.bottomOffset = CGPoint(x: 0, y: searchBar.frame.size.height)
+        dropDown.direction = .bottom
+        dropDown.dismissMode = .automatic
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in
+            self?.searchBar.text = item
+        }
+    }
 }
 
 //MARK:- UISearchBarDelegate
 extension SearchVC: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
+        presenter?.didStartTyping()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        dropDown.show()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -84,12 +109,6 @@ extension SearchVC: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.showsCancelButton = false
-    }
-    
-    func setCellSelection(status: Bool, at indexPath: IndexPath) {
-        if let cell = filterCollectionView.cellForItem(at: indexPath) as? FilterCell {
-            cell.isSelected = status
-        }
     }
 }
 
@@ -152,6 +171,15 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
 
 //MARK:- PresenterToViewSearchProtocol
 extension SearchVC: PresenterToViewSearchProtocol {
+    
+    func showDropDown(with data: [String]) {
+        dropDown.dataSource = data
+        dropDown.show()
+    }
+    
+    func hideDropDown() {
+        dropDown.hide()
+    }
     
     func loadCollectionView() {
         self.filterCollectionView.reloadData()

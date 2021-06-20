@@ -22,6 +22,9 @@ protocol PresenterToViewSearchProtocol: class {
     
     func showFooterIndicator()
     func hideFooterIndicator()
+    
+    func showDropDown(with data: [String])
+    func hideDropDown()
 }
 
 
@@ -41,7 +44,7 @@ protocol ViewToPresenterSearchProtocol: class {
     func didDisplayLastRow()
     func didSelectRowAt(index: Int)
     func didSelectFilterItemAt(index: Int)
-
+    func didStartTyping()
 }
 
 
@@ -58,6 +61,10 @@ protocol PresenterToInteractorSearchProtocol: class {
     func loadNextPage()
     func getSearchResult(at index: Int) -> Recipe?
     func filterResults(of query: String, filterIndex: Int)
+    
+    func saveSuggestions(data: [String])
+    func getSuggestions() -> [String]?
+    
 }
 
 

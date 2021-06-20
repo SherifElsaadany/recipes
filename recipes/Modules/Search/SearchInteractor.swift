@@ -36,6 +36,7 @@ class SearchInteractor {
 
 //MARK:- InteractorToPresenterSearchProtocol
 extension SearchInteractor: PresenterToInteractorSearchProtocol {
+    
     func loadFilterItems() {
         presenter?.didLoadFilterItems(count: HealthFilter.items.count)
     }
@@ -92,5 +93,14 @@ extension SearchInteractor: PresenterToInteractorSearchProtocol {
                 self?.presenter?.fetchDidFail(error: error.localizedDescription)
             }
         })
+    }
+    
+    func saveSuggestions(data: [String]) {
+        UserDefaults.standard.setValue(data, forKey: "suggestions")
+    }
+    
+    func getSuggestions() -> [String]? {
+        let suggestions = UserDefaults.standard.array(forKey: "suggestions") as? [String]
+        return suggestions
     }
 }

@@ -42,10 +42,21 @@ class SearchPresenter {
             return false
         }
     }
+    
+    func getSuggestions() -> [String] {
+        return interactor?.getSuggestions() ?? [String]()
+    }
 }
 
 //MARK:- PresenterToViewSearchProtocol
 extension SearchPresenter: ViewToPresenterSearchProtocol {
+    func didStartTyping() {
+        let suggestions = getSuggestions()
+        
+        if suggestions.count > 0 {
+            view?.showDropDown(with: suggestions.reversed())
+        }
+    }
     
     func viewDidLoad() {
         interactor?.loadFilterItems()
@@ -57,6 +68,7 @@ extension SearchPresenter: ViewToPresenterSearchProtocol {
     }
 
     func search(for query: String, at filterIndex: Int) {
+        view?.hideDropDown()
         self.query = query
         
         if checkIfValid(query: query) {
@@ -64,6 +76,13 @@ extension SearchPresenter: ViewToPresenterSearchProtocol {
         } else {
             view?.showAlertMessage(error: "Search text must only contain alphabet and spaces")
         }
+        
+        var suggestions = interactor?.getSuggestions() ?? [String]()
+        if suggestions.count >= 10 {
+            suggestions.removeFirst()
+        }
+        suggestions.append(query)
+        interactor?.saveSuggestions(data: suggestions)
     }
     
     func resultCell(at index: Int) -> RecipeResult? {

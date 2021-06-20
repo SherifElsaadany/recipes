@@ -9,6 +9,7 @@ target 'recipes' do
   pod 'Alamofire'
   pod 'Kingfisher'
   pod 'PKHUD'
+  pod 'DropDown'
   
   target 'recipesTests' do
     inherit! :search_paths
