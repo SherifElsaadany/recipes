@@ -29,8 +29,17 @@ class IndicatorFooter: UIView {
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         self.addSubview(spinner)
+        spinner.hidesWhenStopped = true
         
         spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
+    
+    func startSpinner() {
+        spinner.startAnimating()
+    }
+    
+    func stopSpinner() {
+        spinner.stopAnimating()
     }
 }

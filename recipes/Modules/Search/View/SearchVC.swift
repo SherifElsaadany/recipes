@@ -16,9 +16,10 @@ class SearchVC: BaseVC {
     
     let dropDown = DropDown()
     
+    let footer = IndicatorFooter()
+    
     lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect.zero)
 
-//    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterCollectionView: UICollectionView!
     @IBOutlet weak var recipesTableView: UITableView!
     
@@ -100,6 +101,14 @@ extension SearchVC {
     func addFooterIndicator() {
         let footer = IndicatorFooter()
         recipesTableView.tableFooterView = footer
+    }
+    
+    func resetTableView() {
+        recipesTableView.isHidden = false
+        recipesTableView.setContentOffset(CGPoint.zero, animated: false)
+        recipesTableView.reloadData()
+        recipesTableView.layoutIfNeeded()
+        recipesTableView.setContentOffset(CGPoint.zero, animated: false)
     }
 }
 
@@ -200,9 +209,13 @@ extension SearchVC: PresenterToViewSearchProtocol {
         self.filterCollectionView.reloadData()
     }
     
+    func resetResultsView() {
+        resetTableView()
+    }
+    
     func updateResultsView() {
         recipesTableView.isHidden = false
-        self.recipesTableView.reloadData()
+        recipesTableView.reloadData()
     }
     
     
@@ -211,22 +224,24 @@ extension SearchVC: PresenterToViewSearchProtocol {
     }
     
     func showAlertMessage(error: String) {
-        
+        self.showAlert(with: error)
     }
     
     func showHUD() {
-        
+        self.showIndicator()
     }
     
     func hideHUD() {
-        
+        self.hideIndicator()
     }
     
     func showFooterIndicator() {
+        footer.startSpinner()
         recipesTableView.tableFooterView?.bounds.size.height = 50
     }
     
     func hideFooterIndicator() {
+        footer.stopSpinner()
         recipesTableView.tableFooterView?.bounds.size.height = 0
     }
 }

@@ -10,6 +10,7 @@
 		3036461560526AFC903F8434 /* Pods_recipes_recipesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B91D799D1D678208702BE5 /* Pods_recipes_recipesUITests.framework */; };
 		5B31DB31267EE94D000F7770 /* IndicatorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31DB30267EE94D000F7770 /* IndicatorFooter.swift */; };
 		5B31DB4F267F03B7000F7770 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31DB4E267F03B7000F7770 /* BaseVC.swift */; };
+		5B31DB6A267F2A8F000F7770 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31DB69267F2A8F000F7770 /* UIViewController+Extension.swift */; };
 		5B7349C9267C4CD600934000 /* SearchContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7349C8267C4CD600934000 /* SearchContract.swift */; };
 		5B7349CE267C4E7000934000 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7349CD267C4E7000934000 /* SearchRouter.swift */; };
 		5B7349DA267C56D200934000 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7349D9267C56D200934000 /* SearchPresenter.swift */; };
@@ -68,6 +69,7 @@
 		37F7FD8FADBC3123D7332087 /* Pods_recipesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_recipesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B31DB30267EE94D000F7770 /* IndicatorFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorFooter.swift; sourceTree = "<group>"; };
 		5B31DB4E267F03B7000F7770 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		5B31DB69267F2A8F000F7770 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		5B7349C8267C4CD600934000 /* SearchContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContract.swift; sourceTree = "<group>"; };
 		5B7349CD267C4E7000934000 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		5B7349D9267C56D200934000 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				5BB372E2267BC7E500B3B953 /* UIView+Extension.swift */,
+				5B31DB69267F2A8F000F7770 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				5BB372D5267BB84000B3B953 /* SearchVC.swift in Sources */,
 				5BB3731F267BE62B00B3B953 /* APIClient.swift in Sources */,
 				5B9107FD267E92910090ECA4 /* DetailsRouter.swift in Sources */,
+				5B31DB6A267F2A8F000F7770 /* UIViewController+Extension.swift in Sources */,
 				5BB37261267BB0D900B3B953 /* AppDelegate.swift in Sources */,
 				5B7349C9267C4CD600934000 /* SearchContract.swift in Sources */,
 				5B7349E4267C615700934000 /* HealthFilter.swift in Sources */,

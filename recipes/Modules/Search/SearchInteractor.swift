@@ -74,7 +74,7 @@ extension SearchInteractor: PresenterToInteractorSearchProtocol {
             switch result {
             case .success(let recipes):
                 self?.mergeOldResults(with: recipes)
-                self?.presenter?.fetchDidRetrieve(count: self?.recipes?.hits?.count)
+                self?.presenter?.pageDidRetrieve(count: self?.recipes?.hits?.count)
             case .failure(let error):
                 self?.presenter?.fetchDidFail(error: error.localizedDescription)
             }

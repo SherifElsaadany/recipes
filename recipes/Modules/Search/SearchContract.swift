@@ -12,6 +12,7 @@ protocol PresenterToViewSearchProtocol: class {
     
     var presenter: ViewToPresenterSearchProtocol? { get set }
     
+    func resetResultsView()
     func updateResultsView()
     func loadCollectionView()
     func showAlertMessage(error: String)
@@ -73,6 +74,7 @@ protocol InteractorToPresenterSearchProtocol: class {
     
     func didLoadFilterItems(count: Int)
     func fetchDidRetrieve(count: Int?)
+    func pageDidRetrieve(count: Int?)
     func fetchDidFail(error: String)
     func noMorePages()
 }

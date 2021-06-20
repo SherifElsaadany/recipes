@@ -19,6 +19,7 @@ class SearchPresenter {
     var query: String?
     
     func handleSearchOptions(for query: String, and filterIndex: Int) {
+        view?.showHUD()
         if filterIndex == 0 {
             interactor?.loadSearchResults(for: query)
         } else {
@@ -48,7 +49,7 @@ class SearchPresenter {
     }
 }
 
-//MARK:- PresenterToViewSearchProtocol
+//MARK:- ViewToPresenterSearchProtocol
 extension SearchPresenter: ViewToPresenterSearchProtocol {
     func didStartTyping() {
         let suggestions = getSuggestions()
@@ -105,7 +106,6 @@ extension SearchPresenter: ViewToPresenterSearchProtocol {
     func didSelectFilterItemAt(index: Int) {
         
         guard let query = self.query else {return}
-        
         handleSearchOptions(for: query, and: index)
     }
 
@@ -113,23 +113,32 @@ extension SearchPresenter: ViewToPresenterSearchProtocol {
 
 //MARK:- InteractorToPresenterSearchProtocol
 extension SearchPresenter: InteractorToPresenterSearchProtocol {
+    
     func didLoadFilterItems(count: Int) {
         self.numberOfCollectionViewItems = count
         view?.loadCollectionView()
     }
     
     func fetchDidRetrieve(count: Int?) {
+        view?.hideHUD()
         guard count ?? 0 > 0 else {
             view?.hideTableView()
             return
         }
         
         self.numberOfRows = count
+        view?.resetResultsView()
+        view?.hideFooterIndicator()
+    }
+    
+    func pageDidRetrieve(count: Int?) {
+        self.numberOfRows = count
         view?.updateResultsView()
         view?.hideFooterIndicator()
     }
     
     func fetchDidFail(error: String) {
+        view?.hideHUD()
         view?.showAlertMessage(error: error)
         view?.hideFooterIndicator()
     }
