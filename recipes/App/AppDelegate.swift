@@ -11,10 +11,16 @@ import DropDown
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DropDown.startListeningToKeyboard()
+        
+        let router = SearchRouter.start()
+        let rootVC = router.entry
+        
+        self.window?.rootViewController = UINavigationController(rootViewController: rootVC!)
+        self.window?.makeKeyAndVisible()
         return true
     }
 
