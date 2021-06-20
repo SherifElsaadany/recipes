@@ -19,40 +19,37 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gWa-MD-7v4">
-                        <rect key="frame" x="0.0" y="0.0" width="93.5" height="93.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="gWa-MD-7v4" secondAttribute="height" id="unQ-nm-WLR"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsI-Kn-9rB">
-                        <rect key="frame" x="0.0" y="0.0" width="508" height="93.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="508" height="117.5"/>
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zfq-4c-Brn">
-                        <rect key="frame" x="10" y="5" width="488" height="83.5"/>
+                        <rect key="frame" x="10" y="5" width="488" height="92.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AfL-qf-agh">
-                                <rect key="frame" x="0.0" y="0.0" width="488" height="55"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AfL-qf-agh">
+                                <rect key="frame" x="0.0" y="0.0" width="488" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="w26-ia-RX3">
-                                        <rect key="frame" x="0.0" y="0.0" width="488" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="udW-zF-LC4"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="488" height="32"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JGm-P8-PoF">
-                                        <rect key="frame" x="0.0" y="30" width="488" height="25"/>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="32" width="488" height="32"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OY-1X-QTf">
-                                <rect key="frame" x="0.0" y="60" width="488" height="23.5"/>
+                                <rect key="frame" x="0.0" y="69" width="488" height="23.5"/>
                                 <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -65,6 +62,7 @@
                     <constraint firstItem="gWa-MD-7v4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8uG-aq-8Vl"/>
                     <constraint firstItem="wsI-Kn-9rB" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="C5j-x6-82r"/>
                     <constraint firstItem="gWa-MD-7v4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="D9J-xt-qMD"/>
+                    <constraint firstAttribute="bottom" secondItem="Zfq-4c-Brn" secondAttribute="bottom" constant="20" id="LVU-vG-qec"/>
                     <constraint firstItem="gWa-MD-7v4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="O0c-X0-U9N"/>
                     <constraint firstItem="Zfq-4c-Brn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="VL2-9x-zNE"/>
                     <constraint firstItem="wsI-Kn-9rB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Vgs-E7-Rxe"/>
@@ -72,7 +70,6 @@
                     <constraint firstItem="wsI-Kn-9rB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gxX-Zk-rE7"/>
                     <constraint firstItem="Zfq-4c-Brn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="hQN-LZ-lca"/>
                     <constraint firstItem="wsI-Kn-9rB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hrR-Xp-d9V"/>
-                    <constraint firstItem="Zfq-4c-Brn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xYi-qx-5vL"/>
                     <constraint firstItem="Zfq-4c-Brn" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="zB3-PE-OqF"/>
                 </constraints>
             </tableViewCellContentView>
