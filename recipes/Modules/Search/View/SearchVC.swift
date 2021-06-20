@@ -75,8 +75,23 @@ extension SearchVC: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         let query = searchBar.text ?? ""
-        presenter?.search(for: query, at: selectedCellIndexpth.row)
+        
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z ].*", options: [])
+            
+            if regex.firstMatch(in: query, options: [], range: NSMakeRange(0, query.count)) != nil {
+                print("Search text must only contain alphabet and spaces")
+                
+            } else {
+                presenter?.search(for: query, at: selectedCellIndexpth.row)
+            }
+        }
+        catch {
+            print(error)
+        }
+        
         searchBar.resignFirstResponder()
     }
     
