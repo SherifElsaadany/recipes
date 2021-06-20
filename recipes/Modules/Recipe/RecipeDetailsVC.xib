@@ -43,7 +43,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Recipe's Website">
-                        <color key="titleColor" name="backgroundColor"/>
+                        <color key="titleColor" name="titleColor"/>
                     </state>
                     <connections>
                         <action selector="recipeWebsiteTapped:" destination="-1" eventType="touchUpInside" id="1uy-AY-9fI"/>
@@ -77,7 +77,10 @@
             <color red="0.98039215686274506" green="0.93333333333333335" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="navColor">
-            <color red="0.63529411764705879" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63499999046325684" green="0.039000000804662704" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="titleColor">
+            <color red="0.98039215686274506" green="0.93333333333333335" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
