@@ -26,6 +26,7 @@ class SearchVC: UIViewController {
         configureTableView()
         configureSearchBar()
         addDropDown()
+        addFooterIndicator()
         self.presenter?.viewDidLoad()
     }
     
@@ -37,15 +38,6 @@ extension SearchVC {
         self.recipesTableView.delegate = self
         self.recipesTableView.dataSource = self
         registerTableViewCells()
-        addFooterIndicator()
-    }
-    
-    func addFooterIndicator() {
-        let footerLabel = UILabel()
-        footerLabel.text = "Loading..."
-        footerLabel.textAlignment = .center
-        footerLabel.backgroundColor = .green
-        recipesTableView.tableFooterView = footerLabel
     }
     
     func configureCollectionview() {
@@ -85,6 +77,11 @@ extension SearchVC {
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in
             self?.searchBar.text = item
         }
+    }
+    
+    func addFooterIndicator() {
+        let footer = IndicatorFooter()
+        recipesTableView.tableFooterView = footer
     }
 }
 
@@ -214,5 +211,4 @@ extension SearchVC: PresenterToViewSearchProtocol {
     func hideFooterIndicator() {
         recipesTableView.tableFooterView?.bounds.size.height = 0
     }
-
 }
