@@ -21,7 +21,6 @@ class RecipeDetailsVC: BaseVC, SFSafariViewControllerDelegate {
         ingredientsTextView.isEditable = false
         self.presenter?.viewDidLoad()
         addShareBtn()
-//        recipeImageView.layer.cornerRadius = 10
     }
     
     @IBAction func recipeWebsiteTapped(_ sender: Any) {

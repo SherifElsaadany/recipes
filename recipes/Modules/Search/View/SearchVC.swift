@@ -76,10 +76,9 @@ extension SearchVC {
         let textfield = searchBar.value(forKey: "searchField") as? UITextField
         textfield?.backgroundColor = UIColor(named: "backgroundColor")
         textfield?.textColor = UIColor(named: "navColor")
-        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
         let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
          UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
-        self.navigationItem.leftBarButtonItem = leftNavBarButton
+        self.navigationItem.titleView = searchBar
     }
     
     func setCellSelection(status: Bool, at indexPath: IndexPath) {
@@ -160,6 +159,9 @@ extension SearchVC: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        searchBar.resignFirstResponder()
+        
         guard indexPath != selectedCellIndexpth else {return}
         
         setCellSelection(status: false, at: selectedCellIndexpth)
@@ -183,6 +185,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.presenter?.didSelectRowAt(index: indexPath.row)
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
